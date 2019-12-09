@@ -26,6 +26,9 @@ public class DataReader {
             ex.printStackTrace();
             System.out.println("Failed to read contents from the web...");
         }
+        for(int i = 0; i < objData.size(); ++i) {
+            System.out.println(objData.get(i));
+        }
         return objData;
     }
 }
