@@ -2,22 +2,32 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class WebScraperUI extends JFrame {
+    private JTextArea dataTextArea;
+    public void fillTextArea() {
+        String contents = "";
+        ArrayList<BookProfile> profiles = (DataParser.parseObjData(DataReader.readWebData()));
+        for(int i = 0; i < profiles.size(); ++i) {
+            contents = contents + (profiles.get(i).toString());
+        }
+        dataTextArea.setText(contents);
+    }
     public void setUpMenu() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuFile = new JMenu("File");
         JMenu menuHelp = new JMenu("Help");
-        JMenuItem menuExit = new JMenuItem("Exit");
-        menuExit.addActionListener(new ActionListener() {
+        JMenuItem miExit = new JMenuItem("Exit");
+        miExit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 System.exit(0);
             }
         });
-        JMenuItem menuAbout = new JMenuItem("About");
+        JMenuItem miAbout = new JMenuItem("About");
         //todo
-        menuAbout.addActionListener(new ActionListener() {
+        miAbout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
 
@@ -26,8 +36,8 @@ public class WebScraperUI extends JFrame {
 
         menuBar.add(menuFile);
         menuBar.add(menuHelp);
-        menuFile.add(menuExit);
-        menuHelp.add(menuAbout);
+        menuFile.add(miExit);
+        menuHelp.add(miAbout);
         setJMenuBar(menuBar);
     }
     public WebScraperUI() {
@@ -42,40 +52,46 @@ public class WebScraperUI extends JFrame {
         panNorth.setLayout(new FlowLayout());
         panSouth.setLayout(new FlowLayout());
 
+        dataTextArea = new JTextArea();
+
+        JLabel URLLabel = new JLabel("Enter URL:");
+        panNorth.add(URLLabel);
+
         JTextField URLField = new JFormattedTextField();
         panNorth.add(URLField);
+
         JButton Fetch = new JButton("Fetch");
-        //todo
         Fetch.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
+            public void actionPerformed(ActionEvent e) {
+                fillTextArea();
             }
         });
         panNorth.add(Fetch);
+
         JButton saveAsText = new JButton("Save as text");
-        //todo
         saveAsText.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
+            public void actionPerformed(ActionEvent e) {
+                DataWriter.writeProfilesToTextFile(DataParser.parseObjData(DataReader.readWebData()));
+                JOptionPane.showMessageDialog(null, "Data saved to .txt file.");
             }
         });
         panSouth.add(saveAsText);
+
         JButton saveAsJSON = new JButton("Save as JSON");
-        //todo
         saveAsJSON.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-
+            public void actionPerformed(ActionEvent e) {
+                DataWriter.writeProfilesToJSON(DataParser.parseObjData(DataReader.readWebData()));
+                JOptionPane.showMessageDialog(null, "Data saved to .json file.");
             }
         });
         panSouth.add(saveAsJSON);
-        JTextArea text = new JTextArea();
 
         c.add(panSouth,BorderLayout.SOUTH);
         c.add(panNorth,BorderLayout.NORTH);
-        c.add(text, BorderLayout.CENTER);
+        c.add(dataTextArea, BorderLayout.CENTER);
         setUpMenu();
     }
 }

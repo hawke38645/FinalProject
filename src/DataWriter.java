@@ -5,9 +5,10 @@ import java.util.ArrayList;
 import org.json.simple.*;
 
 public class DataWriter {
-    public static void writeProfilesToTextFile(String fileName, ArrayList<BookProfile> bookProfiles) {
+    public static void writeProfilesToTextFile(ArrayList<BookProfile> bookProfiles) {
         try {
             //Creating a new file and object to write to the file
+            String fileName = "booksText";
             File file = new File(fileName);
             FileOutputStream fos = new FileOutputStream(file);
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
@@ -27,8 +28,9 @@ public class DataWriter {
             System.out.println("Could not write to file...");
         }
     }
-    public static void writeMembersToJSON(String fileName, ArrayList<BookProfile> bookProfiles) {
+    public static void writeProfilesToJSON(ArrayList<BookProfile> bookProfiles) {
         try {
+            String fileName = "bookJS";
             FileWriter fw = new FileWriter(fileName);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);

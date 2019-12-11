@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class DataParser {
     public static ArrayList<BookProfile> parseObjData(ArrayList<String> objData) {
-        ArrayList<BookProfile> bookProfiles = new ArrayList<>();
+        ArrayList<BookProfile> bookProfiles = new ArrayList<BookProfile>();
         for(int i = 0; i < objData.size(); ++i) {
             //These are temporary data holders for the object data parsed and sent from DataReader. I split the data
             //based on the "by" that is in between all of the html code that deals with the author and title names.
@@ -20,10 +20,13 @@ public class DataParser {
             String authorNumberTemp = StringUtils.substringBetween(tempDataArray[1], "authors/", ">");
             int authorNumber = Integer.parseInt(authorNumberTemp.substring(0, authorNumberTemp.length()-1));
 
-            bookProfiles.get(i).setTitle(titleNameTemp);
-            bookProfiles.get(i).setItemNumber(itemNumber);
-            bookProfiles.get(i).setAuthor(authorNameTemp);
-            bookProfiles.get(i).setAuthorNumber(authorNumber);
+            BookProfile newBook = new BookProfile();
+            newBook.setTitle(titleNameTemp);
+            newBook.setItemNumber(itemNumber);
+            newBook.setAuthor(authorNameTemp);
+            newBook.setAuthorNumber(authorNumber);
+
+            bookProfiles.add(newBook);
         }
         return bookProfiles;
     }

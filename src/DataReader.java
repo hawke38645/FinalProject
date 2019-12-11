@@ -2,7 +2,6 @@ import java.util.Scanner;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 public class DataReader {
     public static ArrayList<String> readWebData() {
         ArrayList<String> objData = new ArrayList<String>();
@@ -23,9 +22,6 @@ public class DataReader {
         catch(Exception ex) {
             ex.printStackTrace();
             System.out.println("Failed to read contents from the web...");
-        }
-        for(int i = 0; i < objData.size(); ++i) {
-            System.out.println(objData.get(i));
         }
         return objData;
     }

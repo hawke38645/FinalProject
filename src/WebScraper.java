@@ -5,8 +5,7 @@ import java.net.URL;
 
 public class WebScraper {
     public static void main(String[] args) {
-        //System.out.println("Now reading data from the Web...");
-        //ArrayList<BookProfile> books = DataParser.parseObjData(DataReader.readWebData());
+        System.out.println("Now reading data from the Web...");
         WebScraperUI frm = new WebScraperUI();
         frm.setVisible(true);
     }
