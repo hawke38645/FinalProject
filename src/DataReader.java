@@ -3,11 +3,18 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class DataReader {
-    public static ArrayList<String> readWebData() {
+    /***
+     * Takes in a string that contains a URL and connects to the internet, parsing a website's HTML foe information.
+     * @param webLink
+     * The return is an arrayList of String objects that contain all the lines of HTML with book information.
+     * @return
+     */
+    public static ArrayList<String> readWebData(String webLink) {
         ArrayList<String> objData = new ArrayList<String>();
         try {
-            URL link = new URL(WebScraper.getURL());
+            URL link = new URL(webLink);
             Scanner urlScanner = new Scanner(link.openStream());
+            //If the line begins with ". <a href=", it means this particular website HTML contains the book information.
             while(urlScanner.hasNextLine()) {
                 String objString = urlScanner.nextLine();
                 if (objString.startsWith(". <a href=")) {

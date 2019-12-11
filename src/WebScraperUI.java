@@ -6,14 +6,23 @@ import java.util.ArrayList;
 
 public class WebScraperUI extends JFrame {
     private JTextArea dataTextArea;
-    public void fillTextArea() {
+    private ArrayList<BookProfile> bookProfiles;
+    /***
+     * Takes in a String of the URL and connects online and retrieves the text into a string variable.
+     *
+     * @param webLink
+     */
+    public void fillTextArea(String webLink) {
         String contents = "";
-        ArrayList<BookProfile> profiles = (DataParser.parseObjData(DataReader.readWebData()));
-        for(int i = 0; i < profiles.size(); ++i) {
-            contents = contents + (profiles.get(i).toString());
+        bookProfiles = (DataParser.parseObjData(DataReader.readWebData(webLink)));
+        for(int i = 0; i < bookProfiles.size(); ++i) {
+            contents = contents + (bookProfiles.get(i).toString());
         }
         dataTextArea.setText(contents);
     }
+    /***
+     * Sets up the top menu for the UI.
+     */
     public void setUpMenu() {
         JMenuBar menuBar = new JMenuBar();
         JMenu menuFile = new JMenu("File");
@@ -26,11 +35,10 @@ public class WebScraperUI extends JFrame {
             }
         });
         JMenuItem miAbout = new JMenuItem("About");
-        //todo
         miAbout.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-
+                JOptionPane.showMessageDialog(null, "Enter the URL in the field on top and press ENTER!");
             }
         });
 
@@ -40,6 +48,9 @@ public class WebScraperUI extends JFrame {
         menuHelp.add(miAbout);
         setJMenuBar(menuBar);
     }
+    /***
+     * Sets up the UI.
+     */
     public WebScraperUI() {
         setTitle("Web Scraper");
         setBounds(200, 100, 500, 500);
@@ -53,18 +64,21 @@ public class WebScraperUI extends JFrame {
         panSouth.setLayout(new FlowLayout());
 
         dataTextArea = new JTextArea();
+        Font Courier = new Font("Courier", Font.PLAIN, 10);
+        dataTextArea.setFont(Courier);
 
         JLabel URLLabel = new JLabel("Enter URL:");
         panNorth.add(URLLabel);
 
         JTextField URLField = new JFormattedTextField();
+        URLField.setColumns(31);
         panNorth.add(URLField);
 
         JButton Fetch = new JButton("Fetch");
         Fetch.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                fillTextArea();
+                fillTextArea(URLField.getText());
             }
         });
         panNorth.add(Fetch);
@@ -73,7 +87,7 @@ public class WebScraperUI extends JFrame {
         saveAsText.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DataWriter.writeProfilesToTextFile(DataParser.parseObjData(DataReader.readWebData()));
+                DataWriter.writeProfilesToTextFile(bookProfiles);
                 JOptionPane.showMessageDialog(null, "Data saved to .txt file.");
             }
         });
@@ -83,7 +97,7 @@ public class WebScraperUI extends JFrame {
         saveAsJSON.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                DataWriter.writeProfilesToJSON(DataParser.parseObjData(DataReader.readWebData()));
+                DataWriter.writeProfilesToJSON(bookProfiles);
                 JOptionPane.showMessageDialog(null, "Data saved to .json file.");
             }
         });

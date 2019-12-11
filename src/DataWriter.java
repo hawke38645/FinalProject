@@ -5,6 +5,10 @@ import java.util.ArrayList;
 import org.json.simple.*;
 
 public class DataWriter {
+    /***
+     * Takes in an ArrayList of BookProfile objects and writes them to a tab delimited text file.
+     * @param bookProfiles
+     */
     public static void writeProfilesToTextFile(ArrayList<BookProfile> bookProfiles) {
         try {
             //Creating a new file and object to write to the file
@@ -28,6 +32,10 @@ public class DataWriter {
             System.out.println("Could not write to file...");
         }
     }
+    /***
+     * Takes in an ArrayList of BookProfile objects and writes them to a JSON file.
+     * @param bookProfiles
+     */
     public static void writeProfilesToJSON(ArrayList<BookProfile> bookProfiles) {
         try {
             String fileName = "bookJS";
@@ -53,6 +61,15 @@ public class DataWriter {
         }
         catch(Exception ex) {
             System.out.println("Could not write to the file...");
+        }
+    }
+    /***
+     * Takes in an ArrayList of BookProfile objects and writes them to the screen.
+     * @param bookProfiles
+     */
+    public static void writeProfilesToScreen(ArrayList<BookProfile> bookProfiles) {
+        for(int i = 0; i < bookProfiles.size(); ++i) {
+            System.out.println(bookProfiles.get(i).toString());
         }
     }
 }

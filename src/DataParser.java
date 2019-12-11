@@ -3,6 +3,12 @@ import java.util.Scanner;
 import org.apache.commons.lang3.StringUtils;
 
 public class DataParser {
+    /***
+     * Takes in an arrayList of strings for the second round of parsing, this time from the arrayList.
+     * @param objData
+     * The return is a list of BookProfile objects that contain all the right data.
+     * @return
+     */
     public static ArrayList<BookProfile> parseObjData(ArrayList<String> objData) {
         ArrayList<BookProfile> bookProfiles = new ArrayList<BookProfile>();
         for(int i = 0; i < objData.size(); ++i) {

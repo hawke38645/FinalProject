@@ -1,5 +1,6 @@
-
-
+/***
+ * This class has 4 private data members: title, itemNumber, author, and authorNumber.
+ */
 public class BookProfile {
 
     private String title;
