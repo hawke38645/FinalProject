@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="baef5474-7556-4efe-9b78-c653068ee508" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataWriter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WebScraperUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BookProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScreenScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScreenScraper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ScreenScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WebScraper.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +54,8 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="ScreenScraper" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ScreenScraper" />
+    <configuration name="WebScraper" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="WebScraper" />
       <module name="FinalProject" />
       <method v="2" />
     </configuration>

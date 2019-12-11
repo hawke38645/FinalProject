@@ -1,15 +1,13 @@
 import java.util.Scanner;
 import java.net.URL;
 import java.util.ArrayList;
-import java.io.File;
-import java.util.regex.Pattern;
 
 
 public class DataReader {
     public static ArrayList<String> readWebData() {
         ArrayList<String> objData = new ArrayList<String>();
         try {
-            URL link = new URL(ScreenScraper.getURL());
+            URL link = new URL(WebScraper.getURL());
             Scanner urlScanner = new Scanner(link.openStream());
             while(urlScanner.hasNextLine()) {
                 String objString = urlScanner.nextLine();

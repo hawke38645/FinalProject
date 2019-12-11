@@ -1,6 +1,5 @@
 
 
-
 public class BookProfile {
 
     private String title;

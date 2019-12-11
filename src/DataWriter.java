@@ -44,7 +44,7 @@ public class DataWriter {
                 bookObjArray.add(bookObj);
             }
             JSONObject outer = new JSONObject();
-            outer.put("Insurance Scores", bookObjArray);
+            outer.put("Book Profiles", bookObjArray);
             pw.println(outer.toJSONString());
             pw.close();
             System.out.println("The data has been successfully written to the file.");
